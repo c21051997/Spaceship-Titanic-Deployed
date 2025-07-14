@@ -78,19 +78,20 @@ docker run -p 8000:8000 spaceship-app
 Once the container is running, you can test the /predict endpoint.
 
 ### 1. Send a request using curl:
-''' bash
+
+```bash
 curl -X POST \
   -H "Content-Type: application/json" \
   --data @payload.json \
   http://localhost:8000/predict
-'''
+```
 
 ### ✅ Expected Response:
-''' bash
+```json
 {
   "transported": false
 }
-'''
+```
 
 --- 
 
