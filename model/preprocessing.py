@@ -8,7 +8,7 @@ def preprocess_data(df, scaler=None, is_train=False):
     This function takes a raw dataframe and returns a clean,
     model-ready dataframe, ready for training or prediction.
     """
-    # --- Basic Imputation & Feature Creation ---
+    # Basic Imputation & Feature Creation
     df['CryoSleep'] = df['CryoSleep'].fillna(False)
     df['VIP'] = df['VIP'].fillna(False)
     
@@ -19,14 +19,14 @@ def preprocess_data(df, scaler=None, is_train=False):
     # Impute Age with the median
     df['Age'].fillna(df['Age'].median(), inplace=True)
 
-    # --- Smarter Spending Imputation ---
+    # Smarter Spending Imputation
     spending_cols = ['RoomService', 'FoodCourt', 'ShoppingMall', 'Spa', 'VRDeck']
     df.loc[df['CryoSleep'] == True, spending_cols] = df.loc[df['CryoSleep'] == True, spending_cols].fillna(0)
     for col in spending_cols:
         median_spend = df.loc[df['CryoSleep'] == False, col].median()
         df[col].fillna(median_spend, inplace=True)
 
-    # --- Advanced Feature Engineering ---
+    # Advanced Feature Engineering
     # Total Spend
     df['TotalSpend'] = df[spending_cols].sum(axis=1)
     df['NoSpend'] = (df['TotalSpend'] == 0).astype(int)
@@ -42,19 +42,19 @@ def preprocess_data(df, scaler=None, is_train=False):
     # Age Bins
     df['AgeGroup'] = pd.cut(df['Age'], bins=[0, 12, 18, 25, 50, 100], labels=['Child', 'Teen', 'Young Adult', 'Adult', 'Senior'])
 
-    # --- Final Data Cleaning ---
+    # Final Data Cleaning
     df = df.drop(['Cabin', 'Name', 'Age', 'Group'], axis=1) # Drop original columns
 
     # One-hot encode all categorical features
     categorical_cols = ['HomePlanet', 'Destination', 'Deck', 'Side', 'AgeGroup']
     df = pd.get_dummies(df, columns=categorical_cols, drop_first=True)
     
-    # --- Convert Data Types ---
+    # Convert Data Types
     df['CryoSleep'] = df['CryoSleep'].astype(int)
     df['VIP'] = df['VIP'].astype(int)
     df['CabinNum'] = pd.to_numeric(df['CabinNum'], errors='coerce').fillna(0).astype(int)
 
-    # --- Feature Scaling ---
+    # Feature Scaling
     # Identify only the columns that actually need scaling
     cols_to_scale = ['TotalSpend', 'CabinNum', 'GroupSize']
     
