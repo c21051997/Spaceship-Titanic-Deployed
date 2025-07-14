@@ -58,13 +58,13 @@ python model/train.py
 ### 🐳 Build the Docker Image
 
 ```bash
-docker build -t spaceship-app .
+docker build -t titanic-spaceship-app .
 ```
 
 ### 🌐 Run the Docker Container
 
 ```bash
-docker run -p 8000:8000 spaceship-app
+docker run -p 8000:8000 titanic-spaceship-app
 ```
 
 ---
