@@ -23,17 +23,12 @@ This project provides an end-to-end machine learning solution for the Kaggle **"
 
 ---
 
-## 📁 Project Structure
-
-
----
-
 ## ⚙️ Setup and Installation
 
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/c21051997/Spaceship-Titanic-Deployed.git
 cd spaceship-titanic-project
 ```
 ### 2. Create and activate a virtual environment
