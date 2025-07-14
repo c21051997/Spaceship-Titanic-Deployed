@@ -1,0 +1,17 @@
+[
+    {
+      "HomePlanet": "Europa",
+      "CryoSleep": false,
+      "Cabin": "B/0/P",
+      "Destination": "TRAPPIST-1e",
+      "Age": 39.0,
+      "VIP": false,
+      "RoomService": 0.0,
+      "FoodCourt": 0.0,
+      "ShoppingMall": 0.0,
+      "Spa": 0.0,
+      "VRDeck": 0.0,
+      "Name": "Maham Ofracculy",
+      "PassengerId": "0001_01"
+    }
+  ]
